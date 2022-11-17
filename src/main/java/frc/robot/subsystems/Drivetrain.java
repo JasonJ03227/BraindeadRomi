@@ -30,22 +30,23 @@ public class Drivetrain extends SubsystemBase {
   private final  RomiGyro m_gyro = new RomiGyro();
   
   //BuiltInAccelerometer
-  private final BuiltInAccelerometer mAccelerometer = new BuiltInAccelerometer();
+  private final BuiltInAccelerometer m_accelerometer = new BuiltInAccelerometer();
   
   //Drivetrain 
-  public DriveTrain() {
+  public Drivetrain() {
     m_rightMotor.setInverted(true);
     m_leftEncoder.setDistancePerPulse(Math.PI * kWheelDiameterMeter / kCountsPerRevolution);
-    m_rightEncoder.setDistancePerPulse(Math.PI * kWheelDiameterMeter / kCountsPerRevolution);\
+    m_rightEncoder.setDistancePerPulse(Math.PI * kWheelDiameterMeter / kCountsPerRevolution);
     resetEncoders();
   }
 
   public void arcadeDrive(double xaxisSpeed, double zaxisRotate) {
     m_dDrive.arcadeDrive(xaxisSpeed, zaxisRotate);
   }
-  public void resetEncoders();
-  m_leftEncoder reset();
-  m_rightEncoder reset();
+  public void resetEncoders(){ 
+    m_leftEncoder.reset();
+    m_rightEncoder.reset();
+  }
 
   public int getLeftEncoderCount() {
     return m_leftEncoder.get();
@@ -64,7 +65,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
 public double getAverageDistanceMeters() {
-  return (getLeftEncoderDistanceMeter() + getRightEncoderDistanceMeter() / 2.0;
+  return (getLeftEncoderDistanceMeter() + getRightEncoderDistanceMeter()) / 2.0;
 }
 
 //X Axis Acceleration

@@ -1,5 +1,8 @@
 package frc.robot.commands;
 
-public class TurnDegrees {
-    
+import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+public class TurnDegrees extends CommandBase {
+
 }
